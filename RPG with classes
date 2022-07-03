@@ -64,7 +64,7 @@ def Mental_death():
 
 class Event:
 
-  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_no_money, option_1_exit_message, option_2, option_2_hp, option_2_stress, option_2_money, option_2_no_money, option_2_exit_message):
+  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_no_money, option_1_exit_message, option_1_out, option_2, option_2_hp, option_2_stress, option_2_money, option_2_no_money, option_2_exit_message, option_2_out):
     self.entry_message = entry_message
     self.option_1 = option_1
     self.option_1_hp = option_1_hp
@@ -72,12 +72,14 @@ class Event:
     self.option_1_money = option_1_money
     self.option_1_no_money = option_1_no_money
     self.option_1_exit_message = option_1_exit_message
+    self.option_1_out = option_1_out
     self.option_2 = option_2
     self.option_2_hp = option_2_hp
     self.option_2_stress = option_2_stress
     self.option_2_money = option_2_money
     self.option_2_no_money = option_2_no_money
     self.option_2_exit_message = option_2_exit_message
+    self.option_2_out = option_2_out
     self.entry_message_full = '{} What will you do?\na) {}.\nb) {}.\n'.format(entry_message,option_1,option_2)
 
   def run_story(self):
@@ -108,7 +110,7 @@ class Event:
         stress += self.option_1_stress
         money += self.option_1_money
         print('{}\n'.format(self.option_1_exit_message))
-        Story_2a()
+        self.option_1_out()
         break
       
       else:
@@ -120,7 +122,7 @@ class Event:
         Story_2b()
         break
 
-Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'No Money text 1','You twisted your ankle.','go around',0,0,-70,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.')
+Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'No Money text 1','You twisted your ankle.','Story_2a','go around',0,0,-70,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.','Story_2b')
 
 def Story_2a():
   
