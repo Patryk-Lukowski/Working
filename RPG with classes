@@ -58,7 +58,7 @@ def Mental_death():
 
 class Event:
 
-  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_exit_message option_2, option_2_hp, option_2_stress, option_2_money, option_2_exit_message):
+  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_exit_message, option_2, option_2_hp, option_2_stress, option_2_money, option_2_exit_message):
     self.entry_message = entry_message
     self.option_1 = option_1
     self.option_1_hp = option_1_hp
@@ -86,22 +86,24 @@ class Event:
         continue
       
       elif your_input == 'a':
-        print('You decided to {}.\nYou twisted your ankle.\n'.format(option_1))
-        hit_points += option_1_hp
-        stress += option_1_stress
-        money += option_1_money
-        print('{}\n'.format(option_1_exit_message))
+        print('You decided to {}.\n'.format(self.option_1))
+        hit_points += self.option_1_hp
+        stress += self.option_1_stress
+        money += self.option_1_money
+        print('{}\n'.format(self.option_1_exit_message))
         Story_2a()
         break
       
       else:
-        print('You decided to {}.\nYou twisted your ankle.\n'.format(option_2))
-        hit_points += option_2_hp
-        stress += option_2_stress
-        money += option_2_money
-        print('{}\n'.format(option_2_exit_message))
+        print('You decided to {}.\n'.format(self.option_2))
+        hit_points += self.option_2_hp
+        stress += self.option_2_stress
+        money += self.option_2_money
+        print('{}\n'.format(self.option_2_exit_message))
         Story_2b()
         break
+
+Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'You twisted your ankle.','go around',0,0,-70,'You were traveing for 5 days and spent 10 coins in inns.')
 
 def Story_2a():
   
@@ -223,7 +225,7 @@ def Story_4():
       Mental_death()
       break
 
-story_2a()
+Intro.run_story()
 
 #try:
 #  Intro()
