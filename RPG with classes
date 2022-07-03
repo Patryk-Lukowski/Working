@@ -110,11 +110,10 @@ class Event:
         stress += self.option_1_stress
         money += self.option_1_money
         print('{}\n'.format(self.option_1_exit_message))
-        #self.option_1_out()
-        #a = self.option_1_out
-        #a.run_story()
-        Story_2a.run_story()
-        #Story_2a()
+        try:
+          eval(self.option_1_out).run_story()
+        except:
+          eval(self.option_1_out)()
         break
       
       else:
@@ -123,10 +122,13 @@ class Event:
         stress += self.option_2_stress
         money += self.option_2_money
         print('{}\n'.format(self.option_2_exit_message))
-        Story_2b()
+        try:
+          eval(self.option_2_out).run_story()
+        except:
+          eval(self.option_2_out)()
         break
 
-Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'No Money text 1','You twisted your ankle.','Story_2a','go around',0,0,-70,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.','Story_2b')
+Intro = Event('You arrive at the bridge. It is broken.','swim through',-20,0,0,'No Money text 1','You twisted your ankle.','Story_2a','go around',0,0,-10,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.','Story_2b')
 
 Story_2a = Event('Story 2a','alpha',-30,0,0,'No Money text 1','Proceed to story 4.','Story_4','beta',0,0,0,'No Money text 2','Death.','Mental_death')
 
@@ -134,7 +136,7 @@ Story_2b = Event('Story 2b','gamma',0,0,-300,'No Money text 1','Proceed to story
 
 Story_3 = Event('Story 3','epsilon',0,40,0,'No Money text 1','Proceed to story 2a.','Story_2a','zeta',0,40,0,'No Money text 2','Proceed to story 4.','Story_4')
 
-Story_4 = Event('Story 4','eta',0,0,0,'No Money text 1','Death.','Phsical_death','theta',0,0,0,'No Money text 2','Death.','Mental_death')
+Story_4 = Event('Story 4','eta',0,0,0,'No Money text 1','Death.','Physical_death','theta',0,0,0,'No Money text 2','Death.','Mental_death')
 
 def Story__2a():
   
@@ -257,9 +259,9 @@ def Story__4():
       Mental_death()
       break
 
-Intro.run_story()
 
-#try:
-#  Intro()
-#except:
-#  pass
+
+try:
+  Intro.run_story()
+except:
+  pass
