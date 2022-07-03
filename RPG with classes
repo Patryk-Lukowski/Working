@@ -8,12 +8,18 @@ money = 100
 hit_points = 100
 stress = 0
 
-def money_check(payment):
-  global broke
-  if payment > money:
-    broke = True
+def money_check(payment_1,payment_2):
+  global broke_1,broke_2
+  if payment_1 > money:
+    broke_1 = True
   else:
-    broke = False
+    broke_1 = False
+
+  if payment_2 > money:
+    broke_2 = True
+  else:
+    broke_2 = False
+
   
 def enter_hero_status(hit_points,stress):
   
@@ -76,6 +82,7 @@ class Event:
 
     global money,hit_points,stress
     enter_hero_status(hit_points,stress)
+    #money_check(pay)
     
     while True:
       your_input = input('{}\n'.format(self.entry_message_full)).lower()
@@ -138,8 +145,9 @@ def Story_2b():
   options = ['gamma', 'delta']
   global money,hit_points,stress
   enter_hero_status(hit_points,stress)
-  pay = 300
-  money_check(pay)
+  paya = 300
+  payb = 0
+  money_check(paya,payb)
   
   while True:
     your_input = input('Story 2b. What will you do?\na) {}.\nb) {}.\n'.format(options[0],options[1])).lower()
@@ -149,7 +157,7 @@ def Story_2b():
       print('Please select a or b.\n')
       continue
     
-    elif your_input == 'a' and broke is True:
+    elif your_input == 'a' and broke_1 is True:
       print('customizable text. You do not have enough money.\n')
       continue
 
