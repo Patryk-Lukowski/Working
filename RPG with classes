@@ -64,17 +64,19 @@ def Mental_death():
 
 class Event:
 
-  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_exit_message, option_2, option_2_hp, option_2_stress, option_2_money, option_2_exit_message):
+  def __init__(self, entry_message, option_1, option_1_hp, option_1_stress, option_1_money, option_1_no_money, option_1_exit_message, option_2, option_2_hp, option_2_stress, option_2_money, option_2_no_money, option_2_exit_message):
     self.entry_message = entry_message
     self.option_1 = option_1
     self.option_1_hp = option_1_hp
     self.option_1_stress = option_1_stress
     self.option_1_money = option_1_money
+    self.option_1_no_money = option_1_no_money
     self.option_1_exit_message = option_1_exit_message
     self.option_2 = option_2
     self.option_2_hp = option_2_hp
     self.option_2_stress = option_2_stress
     self.option_2_money = option_2_money
+    self.option_2_no_money = option_2_no_money
     self.option_2_exit_message = option_2_exit_message
     self.entry_message_full = '{} What will you do?\na) {}.\nb) {}.\n'.format(entry_message,option_1,option_2)
 
@@ -82,7 +84,7 @@ class Event:
 
     global money,hit_points,stress
     enter_hero_status(hit_points,stress)
-    #money_check(pay)
+    money_check(self.option_1_money,self.option_2_money)
     
     while True:
       your_input = input('{}\n'.format(self.entry_message_full)).lower()
@@ -91,6 +93,14 @@ class Event:
       if not(your_input in ['a','b']):
         print('Please select a or b.\n')
         continue
+
+      elif your_input == 'a' and broke_1 is True:
+        print('{}\n'.format(self.option_1_no_money))
+        continue
+
+      elif your_input == 'b' and broke_2 is True:
+        print('{}\n'.format(self.option_2_no_money))
+        continue          
       
       elif your_input == 'a':
         print('You decided to {}.\n'.format(self.option_1))
@@ -110,7 +120,7 @@ class Event:
         Story_2b()
         break
 
-Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'You twisted your ankle.','go around',0,0,-70,'You were traveing for 5 days and spent 10 coins in inns.')
+Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'No Money text 1','You twisted your ankle.','go around',0,0,-70,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.')
 
 def Story_2a():
   
