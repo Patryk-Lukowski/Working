@@ -110,7 +110,11 @@ class Event:
         stress += self.option_1_stress
         money += self.option_1_money
         print('{}\n'.format(self.option_1_exit_message))
-        self.option_1_out()
+        #self.option_1_out()
+        #a = self.option_1_out
+        #a.run_story()
+        Story_2a.run_story()
+        #Story_2a()
         break
       
       else:
@@ -124,7 +128,15 @@ class Event:
 
 Intro = Event('You arrive at the bridge. It is broken.','swim through',-60,0,0,'No Money text 1','You twisted your ankle.','Story_2a','go around',0,0,-70,'No Money text 2','You were traveing for 5 days and spent 10 coins in inns.','Story_2b')
 
-def Story_2a():
+Story_2a = Event('Story 2a','alpha',-30,0,0,'No Money text 1','Proceed to story 4.','Story_4','beta',0,0,0,'No Money text 2','Death.','Mental_death')
+
+Story_2b = Event('Story 2b','gamma',0,0,-300,'No Money text 1','Proceed to story 3.','Story_3','delta',0,40,0,'No Money text 2','Proceed to story 3.','Story_3')
+
+Story_3 = Event('Story 3','epsilon',0,40,0,'No Money text 1','Proceed to story 2a.','Story_2a','zeta',0,40,0,'No Money text 2','Proceed to story 4.','Story_4')
+
+Story_4 = Event('Story 4','eta',0,0,0,'No Money text 1','Death.','Phsical_death','theta',0,0,0,'No Money text 2','Death.','Mental_death')
+
+def Story__2a():
   
   options = ['alpha', 'beta']
   global money,hit_points,stress
@@ -152,7 +164,7 @@ def Story_2a():
       Mental_death()
       break
       
-def Story_2b():
+def Story__2b():
   
   options = ['gamma', 'delta']
   global money,hit_points,stress
@@ -189,7 +201,7 @@ def Story_2b():
       Story_3()
       break
 
-def Story_3():
+def Story__3():
   
   options = ['epsion', 'zeta']
   global money,hit_points,stress
@@ -219,7 +231,7 @@ def Story_3():
       Story_4()
       break
 
-def Story_4():
+def Story__4():
   
   options = ['eta', 'theta']
   global money,hit_points,stress
